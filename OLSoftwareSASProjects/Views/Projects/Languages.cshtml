@@ -1,0 +1,42 @@
+﻿@model IEnumerable<OLSoftwareSASProjects.Models.ViewModels.ProjectLanguageViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Lenguajes del proyecto </h1>
+
+<p>
+    <a asp-action="RegisterLanguage" asp-route-id="@ViewData["ProjectId"]">Registrar lenguaje para este proyecto</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProgrammingLanguage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LevelDescription)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProgrammingLanguage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LevelDescription)
+            </td>
+            <td>
+               <a asp-action="" asp-route-id="@item.ProjectLanguageId">Eliminar</a> 
+            </td> 
+        </tr>
+}
+    </tbody>
+</table>
+</br>
+<h5>@ViewData["TransactionErrorMessage"]</h5>

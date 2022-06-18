@@ -1,0 +1,36 @@
+﻿@model OLSoftwareSASProjects.Models.ProjectLanguage
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Proyectos</h1>
+
+<h4>Lista</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="RegisterLanguage"  method="post">
+            <input type="hidden" value="@ViewData["ProjectId"]" asp-for="ProjectId"/>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ProgrammingLanguageId" class="control-label"></label>
+                <select asp-for="ProgrammingLanguageId" class ="form-control" asp-items="ViewBag.ProgrammingLanguageId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Registrar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Volver a la lista de lenguajes del proyecto</a>
+</div>
+</br>
+<h5>@ViewData["TransactionErrorMessage"]</h5>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
